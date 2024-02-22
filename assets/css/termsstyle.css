@@ -150,6 +150,21 @@ p.contentbodyheader
     .headerbutton {
       display: none;
     }
+
+    .contentbodydata
+    {
+        font-size: 0.8rem;
+    }
+
+    p.contentbodyheader
+    {
+        font-size: 1rem;
+    }
+
+    .contenthighlightbody
+    {
+        font-size: 1rem;
+    }
 }
 
 .footerlogo
