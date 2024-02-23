@@ -1,16 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>RainHero Games</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-                <h2 class="logo">RainHero Games</h2>
-            </div>
-        </div>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/commonstyle.css" />
+    <link rel="stylesheet" href="assets/css/termsstyle.css" />
+    <script src="assets/js/navigation.js"></script>
+  </head>
+  <body style="margin: 0px">
+    <div class="logo">
+      <img id="logoimg" src="assets/images/logoname.png" alt="logo" />
     </div>
-    </body>
+    <header id="one" class="mainheaderindex">
+      <a href="mailto:gamesrainhero@gmail.com" class="headerbutton"
+        >Contact Me</a
+      >
+      <a href="privacy.html" class="headerbutton">Privacy Policy</a>
+      <a href="terms.html" class="headerbutton">Terms Of Services</a>
+      <a href="index.html" class="headerbutton">My Games</a>
+      <section id="navbuttonsection">
+        <img id="menuimage" src="assets/images/menu.png" alt="menu icon" />
+        <input
+          id="tabcheckbox"
+          type="checkbox"
+          onclick="changeCheckBoxImage()"
+        />
+      </section>
+      <section>
+        <div id="navigationpanel" style="display: none">
+          <div>
+            <a href="index.html" class="navigationbutton">My Games</a>
+          </div>
+          <div id="navigationunderline"></div>
+          <div>
+            <a href="terms.html" class="navigationbutton">Terms Of Services</a>
+          </div>
+          <div id="navigationunderline"></div>
+          <div>
+            <a href="privacy.html" class="navigationbutton">Privacy Policy</a>
+          </div>
+          <div id="navigationunderline"></div>
+          <div>
+            <a href="mailto:gamesrainhero@gmail.com" class="navigationbutton"
+              >Contact Me</a
+            >
+          </div>
+        </div>
+      </section>
+    </header>
+    <section id="two">
+      <div class="maincontentboxindex">
+        <div>
+          <header class="align-center">
+            <h2 class="platformname">Mobile Games</h2>
+            <div class="mobilegamesinfoparent">
+              <article class="gameinfocontainer">
+                <img
+                  class="mobilegamesbigImg"
+                  src="assets/images/mobilegames/mainbg/fishingseasonbg.webp"
+                  alt="Fishing Season game illustration"
+                  loading="lazy"
+                />
+                <figure>
+                  <img
+                    class="mobilegamessmallImg"
+                    width="450"
+                    height="450"
+                    src="assets/images/mobilegames/gameicon/fishingseasonicon.webp"
+                    alt="Fishing Season game icon"
+                    loading="lazy"
+                  />
+                  <figcaption>
+                    <h3 class="gamenameheader">Fishing Season</h3>
+                    <p class="gamegenreheader">Casual</p>
+                  </figcaption>
+                </figure>
+                <div>
+                  <a href="index.html" target="_blank" class="storeButton">
+                    <img
+                      height="50"
+                      width="50"
+                      src="assets/images/googleplaystoreicon.png"
+                      alt="Google Play icon"
+                      loading="lazy"
+                    />
+                    <p class="gamelinkbuttonname">
+                      Get it on<br /><strong>Google Play</strong>
+                    </p>
+                  </a>
+                </div>
+              </article>
+            </div>
+          </header>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer id="footer">
+      <div>
+        <p class="footerlogo">&copy; 2024 RainHero Games</p>
+      </div>
+    </footer>
+  </body>
 </html>
