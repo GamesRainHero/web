@@ -14,3 +14,20 @@ function changeCheckBoxImage()
 
     return false;
 }
+
+    window.onscroll = function () {
+        closeNavigation();
+      }
+  
+function closeNavigation()
+{
+    var checkbox = document.getElementById("tabcheckbox");
+    var img = document.getElementById("menuimage");
+    var navigation = document.getElementById("navigationpanel");
+
+    if (checkbox.checked == true) {
+        img.src = "assets/images/menu.png";
+        navigation.style.display = "none";
+        checkbox.checked = false;
+    }
+}

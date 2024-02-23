@@ -73,6 +73,11 @@
     background: #ffffff;
 }
 
+.gameinfocontainer:hover {
+    transition: .2s ease-in-out;
+    transform: scale(1.1)
+}
+
 article,figcaption,figure {
     display: inline-block;
     margin: 0;
@@ -133,7 +138,7 @@ article,figcaption,figure {
 }
 
 .gameinfocontainer div {
-    padding: 0 21px 21px 21px;
+    padding: 0px 21px 21px 21px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,7 +175,7 @@ article,figcaption,figure {
     flex-wrap: wrap;
     text-align: center;
     gap: 1%;
-    width: 40%;
+    width: 60%;
     transition: .2s ease-in-out;
     background: #f1f1f1;
     text-decoration: none;
@@ -190,5 +195,14 @@ article,figcaption,figure {
     #logoimg
     {
         width: 490px;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    .mobilegamesinfoparent
+    {
+        padding: 0;
+        transform: scale(0.8);
     }
 }
