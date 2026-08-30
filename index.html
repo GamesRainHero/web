@@ -1,109 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RainHero Games</title>
+    <script>document.documentElement.classList.add("js");</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/commonstyle.css" />
-    <link rel="stylesheet" href="assets/css/termsstyle.css" />
-    <script src="assets/js/navigation.js"></script>
+
+    <title>Rainhero Games</title>
+    <meta
+      name="description"
+      content="Rainhero Games is a one-person game studio in India making bright, easy-to-pick-up mobile games for Android."
+    />
+    <meta name="theme-color" content="#d9500a" />
+
+    <link rel="canonical" href="https://gamesrainhero.github.io/web/" />
+    <meta property="og:url" content="https://gamesrainhero.github.io/web/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rainhero Games" />
+    <meta
+      property="og:title"
+      content="Rainhero Games — indie mobile games from India"
+    />
+    <meta
+      property="og:description"
+      content="One Person. Infinite Coffees. Building Joyful Little Games."
+    />
+    <meta
+      property="og:image"
+      content="https://gamesrainhero.github.io/web/assets/images/brand/og-cover.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/images/brand/rg-mark-32.png" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/images/brand/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400..700&family=Fredoka:wght@400..600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/rainhero.css" />
+    <script src="assets/js/site.js" defer></script>
   </head>
-  <body style="margin: 0px">
-    <div class="logo">
-      <img id="logoimg" src="assets/images/logoname.png" alt="logo" />
-    </div>
-    <header id="one" class="mainheaderindex">
-      <a href="mailto:gamesrainhero@gmail.com" class="headerbutton"
-        >Contact Me</a
-      >
-      <a href="privacy.html" class="headerbutton">Privacy Policy</a>
-      <a href="terms.html" class="headerbutton">Terms Of Services</a>
-      <a href="index.html" class="headerbutton">My Games</a>
-      <section id="navbuttonsection">
-        <img id="menuimage" src="assets/images/menu.png" alt="menu icon" />
-        <input
-          id="tabcheckbox"
-          type="checkbox"
-          onclick="changeCheckBoxImage()"
-        />
-      </section>
-      <section>
-        <div id="navigationpanel" style="display: none">
-          <div>
-            <a href="index.html" class="navigationbutton">My Games</a>
-          </div>
-          <div id="navigationunderline"></div>
-          <div>
-            <a href="terms.html" class="navigationbutton">Terms Of Services</a>
-          </div>
-          <div id="navigationunderline"></div>
-          <div>
-            <a href="privacy.html" class="navigationbutton">Privacy Policy</a>
-          </div>
-          <div id="navigationunderline"></div>
-          <div>
-            <a href="mailto:gamesrainhero@gmail.com" class="navigationbutton"
-              >Contact Me</a
-            >
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="index.html">
+          <img
+            class="brand__mark"
+            src="assets/images/brand/rg-mark-256.png"
+            width="256"
+            height="256"
+            alt=""
+          />
+          <span class="brand__name">Rainhero&nbsp;Games</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main">
+          <ul class="site-nav__list">
+            <li><a class="site-nav__link" href="#games">Games</a></li>
+            <li><a class="site-nav__link" href="#studio">Studio</a></li>
+            <li><a class="site-nav__link" href="privacy.html">Privacy</a></li>
+            <li><a class="site-nav__link" href="terms.html">Terms</a></li>
+            <li>
+              <a class="site-nav__link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="nav-scrim" aria-hidden="true"></div>
+
+    <main id="main">
+      <!-- ============ Hero: rain that turns into a rainbow ============ -->
+      <section class="hero">
+        <div class="hero__glow" aria-hidden="true"></div>
+
+        <div class="hero__sparkles" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 0c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z"/></svg>
+        </div>
+
+        <svg
+          class="hero__arc"
+          viewBox="0 0 1200 340"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path pathLength="1" d="M20 340 A580 318 0 0 1 1180 340" />
+          <path pathLength="1" d="M48 340 A552 290 0 0 1 1152 340" />
+          <path pathLength="1" d="M76 340 A524 262 0 0 1 1124 340" />
+          <path pathLength="1" d="M104 340 A496 234 0 0 1 1096 340" />
+          <path pathLength="1" d="M132 340 A468 206 0 0 1 1068 340" />
+          <path pathLength="1" d="M160 340 A440 178 0 0 1 1040 340" />
+        </svg>
+
+        <div class="shell">
+          <svg
+            class="hero__umbrella"
+            viewBox="-8 -14 136 118"
+            role="img"
+            aria-label="Umbrella"
+          >
+            <circle cx="60" cy="-2" r="4.8" fill="#ffffff" />
+            <path d="M60 3 L60 9" stroke="#ffffff" stroke-width="3.5"
+                  stroke-linecap="round" />
+            <path
+              d="M4 44 A56 39 0 0 1 116 44 q-14 12 -28 0 q-14 12 -28 0 q-14 12 -28 0 q-14 12 -28 0 Z"
+              fill="#ffffff"
+            />
+            <path
+              d="M60 9 Q76 26 88 44 M60 9 Q44 26 32 44"
+              fill="none"
+              stroke="#f2c294"
+              stroke-width="3.2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M60 47 L60 82 q0 13 -13 13 q-10 0 -10 -9"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <h1 class="hero__title">
+            Rainhero
+            <span>Games</span>
+          </h1>
+
+          <p class="hero__tagline">
+            One Person. Infinite Coffees. Building Joyful Little Games.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--solid" href="#games">See the games</a>
+            <a class="btn btn--ghost" href="#studio">About the studio</a>
           </div>
         </div>
       </section>
-    </header>
-    <section id="two">
-      <div class="maincontentboxindex">
-        <div>
-          <header class="align-center">
-            <h2 class="platformname">Mobile Games</h2>
-            <div class="mobilegamesinfoparent">
-              <article class="gameinfocontainer">
+
+      <hr class="rainbow-rule" />
+
+      <!-- ============ Games ============ -->
+      <section class="section" id="games">
+        <div class="shell">
+          <div class="section-head reveal">
+            <p class="eyebrow">Games</p>
+            <h2 class="section-title">Small games, made slowly.</h2>
+            <p class="section-lead">
+              Everything here is built, drawn, tuned and shipped by one person.
+              Free to play on Android.
+            </p>
+          </div>
+
+          <ul class="game-grid">
+            <li class="game-card reveal">
+              <div class="game-card__art">
+                <span class="game-card__status">Out now</span>
                 <img
-                  class="mobilegamesbigImg"
                   src="assets/images/mobilegames/mainbg/fishingseasonbg.webp"
-                  alt="Fishing Season game illustration"
+                  width="1024"
+                  height="1024"
+                  alt="Fishing Season key art"
                   loading="lazy"
+                  decoding="async"
                 />
-                <figure>
+              </div>
+              <div class="game-card__body">
+                <img
+                  class="game-card__icon"
+                  src="assets/images/mobilegames/gameicon/fishingseasonicon.webp"
+                  width="1024"
+                  height="1024"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <h3 class="game-card__name">Fishing Season</h3>
+                  <p class="game-card__meta">Casual · Android</p>
+                </div>
+              </div>
+              <div class="game-card__foot">
+                <a
+                  class="play-badge"
+                  href="https://play.google.com/store/apps/details?id=com.rainherogames.fishingcontest"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <img
-                    class="mobilegamessmallImg"
-                    width="450"
-                    height="450"
-                    src="assets/images/mobilegames/gameicon/fishingseasonicon.webp"
-                    alt="Fishing Season game icon"
+                    src="assets/images/googleplaystoreicon.png"
+                    width="26"
+                    height="26"
+                    alt=""
                     loading="lazy"
                   />
-                  <figcaption>
-                    <h3 class="gamenameheader">Fishing Season</h3>
-                    <p class="gamegenreheader">Casual</p>
-                  </figcaption>
-                </figure>
-                <div>
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.rainherogames.fishingcontest"
-                    target="_blank"
-                    class="storeButton"
-                  >
-                    <img
-                      height="50"
-                      width="50"
-                      src="assets/images/googleplaystoreicon.png"
-                      alt="Google Play icon"
-                      loading="lazy"
-                    />
-                    <p class="gamelinkbuttonname">
-                      Get it on<br /><strong>Google Play</strong>
-                    </p>
-                  </a>
-                </div>
-              </article>
-            </div>
-          </header>
+                  <span>Get it on <strong>Google Play</strong></span>
+                </a>
+              </div>
+            </li>
+
+          </ul>
         </div>
-      </div>
-    </section>
-    <!-- Footer -->
-    <footer id="footer">
-      <div>
-        <p class="footerlogo">&copy; 2024 RainHero Games</p>
+      </section>
+
+      <!-- ============ Studio ============ -->
+      <section class="section section--tint" id="studio">
+        <div class="shell about">
+          <div class="about__body reveal">
+            <p class="eyebrow">The studio</p>
+            <h2 class="section-title">Made by one person, in India.</h2>
+            <p>
+              Rainhero Games is not a company with a floor of desks. It is one
+              developer who writes the code, draws the art, picks the music and
+              answers the support email.
+            </p>
+            <p>
+              That means fewer games, and more time spent on each one. The goal
+              is simple: something you can start in ten seconds, understand in
+              thirty, and still want to open tomorrow.
+            </p>
+            <p>
+              No forced sign-ups, no paywalls in the middle of a level. If a
+              game is not fun without spending, it is not finished.
+            </p>
+          </div>
+
+          <dl class="facts reveal">
+            <div><dt>Team</dt><dd>One developer</dd></div>
+            <div><dt>Based in</dt><dd>India</dd></div>
+            <div><dt>Platform</dt><dd>Android</dd></div>
+            <div><dt>Making games since</dt><dd>2024</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============ Contact ============ -->
+      <section class="contact" id="contact">
+        <div class="shell">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section-title">Found a bug? Got an idea?</h2>
+          <p>
+            Every email lands with the person who made the game. Bug reports,
+            feedback and publishing enquiries are all welcome.
+          </p>
+          <div class="contact__actions">
+            <a class="btn btn--solid" href="mailto:gamesrainhero@gmail.com"
+              >gamesrainhero@gmail.com</a
+            >
+            <button
+              class="btn btn--ghost"
+              type="button"
+              data-copy="gamesrainhero@gmail.com"
+            >
+              Copy address
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <div class="footer-brand">
+          <img
+            src="assets/images/brand/rg-mark-256.png"
+            width="256"
+            height="256"
+            alt=""
+            loading="lazy"
+          />
+          <span>Rainhero Games</span>
+        </div>
+        <ul class="footer-links">
+          <li><a href="#games">Games</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <p class="footer-note">
+          &copy; 2024&ndash;<span data-year>2026</span> Rainhero Games. Google Play and the
+          Google Play logo are trademarks of Google LLC.
+        </p>
       </div>
     </footer>
   </body>

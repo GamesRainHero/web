@@ -1,0 +1,1286 @@
+@charset "UTF-8";
+/* ============================================================
+   Rainhero Games — site styles
+   One stylesheet. No framework, no template.
+   ============================================================ */
+
+/* ---------- 1. Tokens ------------------------------------- */
+:root {
+  /* Everything lives in the orange family: the "black" is a warm
+     brown, the "white" is a warm paper. No neutral grey anywhere. */
+  --ember: #d9500a;
+  --ember-deep: #8a3a05;
+  --ember-dark: #7a3204;
+  --sun: #f9a825;
+  --sun-light: #ffc65c;
+  --peach: #ffd9ae;
+
+  --ink: #2a1206;
+  --ink-soft: #5a3a22;
+  --ink-faint: #8a6a52;
+
+  --cream: #fff4e6;
+  --cream-deep: #ffe9cf;
+  --paper: #ffffff;
+
+  /* The six bands, used only in the hero arc and the rule below it */
+  --band-1: #e5372c;
+  --band-2: #f5871f;
+  --band-3: #f7c927;
+  --band-4: #4cb050;
+  --band-5: #2a9fd8;
+  --band-6: #6c4bc7;
+
+  --font-display: "Fredoka", "Trebuchet MS", sans-serif;
+  --font-body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  --shell: 1280px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --radius: 22px;
+  --radius-sm: 12px;
+
+  --lift: 0 2px 4px rgba(90, 40, 6, 0.06), 0 12px 28px rgba(90, 40, 6, 0.1);
+  --lift-hi: 0 4px 8px rgba(90, 40, 6, 0.08), 0 22px 44px rgba(90, 40, 6, 0.18);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- 2. Base --------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--ember-deep);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--ember);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.hero :focus-visible {
+  outline-color: var(--paper);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+  color: var(--cream);
+}
+
+.shell {
+  width: min(100% - var(--gutter) * 2, var(--shell));
+  margin-inline: auto;
+}
+
+/* ---------- 3. Type scale --------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ember-deep);
+  margin: 0 0 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+}
+
+.section-lead {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 1.125rem;
+}
+
+.section {
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.section--tint {
+  background: var(--cream-deep);
+}
+
+/* ---------- 4. Buttons ------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease),
+    background-color 0.18s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--solid {
+  background: var(--paper);
+  color: var(--ember-dark);
+  box-shadow: var(--lift);
+}
+
+.btn--solid:hover {
+  color: var(--ember-dark);
+  box-shadow: var(--lift-hi);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.btn--ghost:hover {
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.btn--ink {
+  background: var(--ink);
+  color: var(--cream);
+  box-shadow: var(--lift);
+}
+
+.btn--ink:hover {
+  color: var(--cream);
+  box-shadow: var(--lift-hi);
+}
+
+/* ---------- 5. Header ------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cream);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.site-header.is-stuck::before {
+  opacity: 0.97;
+}
+
+.site-header.is-stuck {
+  box-shadow: 0 1px 0 rgba(42, 18, 6, 0.08), 0 8px 24px rgba(90, 40, 6, 0.07);
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  box-shadow: 0 2px 8px rgba(90, 40, 6, 0.28);
+  transition: transform 0.3s var(--ease);
+}
+
+.brand:hover .brand__mark {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.brand__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  color: var(--paper);
+  text-shadow: 0 1px 3px rgba(90, 30, 0, 0.4);
+  transition: color 0.3s var(--ease), text-shadow 0.3s var(--ease);
+}
+
+.is-stuck .brand__name {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+/* nav */
+.site-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__link {
+  display: block;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  color: var(--paper);
+  text-shadow: 0 1px 3px rgba(90, 30, 0, 0.4);
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.site-nav__link:hover {
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.is-stuck .site-nav__link {
+  color: var(--ink-soft);
+  text-shadow: none;
+}
+
+.is-stuck .site-nav__link:hover {
+  color: var(--ember-dark);
+  background: rgba(217, 80, 10, 0.1);
+}
+
+/* pages that are not the hero page start in the "stuck" palette */
+.site-header--solid::before {
+  opacity: 0.97;
+}
+
+.site-header--solid .brand__name {
+  color: var(--ink);
+  text-shadow: none;
+}
+
+.site-header--solid .site-nav__link {
+  color: var(--ink-soft);
+  text-shadow: none;
+}
+
+.site-header--solid .site-nav__link:hover {
+  color: var(--ember-dark);
+  background: rgba(217, 80, 10, 0.1);
+}
+
+.site-header--solid .nav-toggle__bars,
+.site-header--solid .nav-toggle__bars::before,
+.site-header--solid .nav-toggle__bars::after {
+  background: var(--ink);
+}
+
+/* hamburger */
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+}
+
+.is-stuck .nav-toggle {
+  background: rgba(217, 80, 10, 0.1);
+}
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--paper);
+  transition: transform 0.28s var(--ease), opacity 0.18s var(--ease),
+    background-color 0.3s var(--ease);
+}
+
+.nav-toggle__bars {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.nav-toggle__bars::before {
+  transform: translate(-50%, -7px);
+}
+
+.nav-toggle__bars::after {
+  transform: translate(-50%, 7px);
+}
+
+.is-stuck .nav-toggle__bars,
+.is-stuck .nav-toggle__bars::before,
+.is-stuck .nav-toggle__bars::after {
+  background: var(--ink);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars {
+  background: transparent !important;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before {
+  transform: translate(-50%, 0) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after {
+  transform: translate(-50%, 0) rotate(-45deg);
+}
+
+@media (max-width: 760px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(78vw, 320px);
+    padding: 6rem 1.5rem 2rem;
+    background: var(--ink);
+    transform: translateX(100%);
+    transition: transform 0.32s var(--ease);
+    z-index: 110;
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .site-nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+  }
+
+  .site-nav__link,
+  .is-stuck .site-nav__link,
+  .site-header--solid .site-nav__link {
+    color: var(--cream);
+    text-shadow: none;
+    font-size: 1.15rem;
+    padding: 0.85rem 1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .site-nav__link:hover,
+  .is-stuck .site-nav__link:hover,
+  .site-header--solid .site-nav__link:hover {
+    color: var(--sun-light);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-toggle {
+    z-index: 120;
+  }
+
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before,
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after {
+    background: var(--cream);
+  }
+
+  .nav-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 18, 6, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s var(--ease), visibility 0.3s;
+    z-index: 105;
+  }
+
+  .nav-scrim.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.nav-scrim {
+  display: none;
+}
+
+/* ---------- 6. Hero (the signature) ------------------------ */
+.hero {
+  position: relative;
+  margin-top: -76px;
+  padding: clamp(8rem, 18vh, 11rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(
+      120% 95% at 50% 32%,
+      var(--sun) 0%,
+      #f08a12 42%,
+      var(--ember) 74%,
+      #b94208 100%
+    )
+    var(--ember);
+  text-align: center;
+}
+
+/* a soft warm glow that lifts the wordmark off the sky */
+.hero__glow {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: min(120%, 1200px);
+  aspect-ratio: 2 / 1;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+  pointer-events: none;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 214, 150, 0.5) 0%,
+    rgba(255, 200, 120, 0.22) 45%,
+    transparent 100%
+  );
+}
+
+/* the four-point sparkles from the logo, kept few and slow */
+.hero__sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__sparkles svg {
+  position: absolute;
+  fill: #ffffff;
+  opacity: 0.3;
+  filter: drop-shadow(0 0 10px rgba(255, 240, 210, 0.75));
+  animation: twinkle 5.5s var(--ease) infinite;
+}
+
+.hero__sparkles svg:nth-child(1) {
+  left: 9%;
+  top: 20%;
+  width: 34px;
+  animation-duration: 5s;
+}
+.hero__sparkles svg:nth-child(2) {
+  left: 19%;
+  top: 68%;
+  width: 18px;
+  animation-delay: 1.4s;
+  animation-duration: 6.5s;
+}
+.hero__sparkles svg:nth-child(3) {
+  right: 11%;
+  top: 24%;
+  width: 27px;
+  animation-delay: 0.7s;
+  animation-duration: 5.8s;
+}
+.hero__sparkles svg:nth-child(4) {
+  right: 20%;
+  top: 66%;
+  width: 20px;
+  animation-delay: 2.1s;
+  animation-duration: 7s;
+}
+.hero__sparkles svg:nth-child(5) {
+  left: 30%;
+  top: 12%;
+  width: 15px;
+  animation-delay: 2.8s;
+  animation-duration: 6s;
+}
+.hero__sparkles svg:nth-child(6) {
+  right: 30%;
+  top: 10%;
+  width: 17px;
+  animation-delay: 3.4s;
+  animation-duration: 6.8s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1) rotate(15deg);
+  }
+}
+
+@media (max-width: 700px) {
+  /* fewer sparkles on a narrow hero, so they read as accents not clutter */
+  .hero__sparkles svg:nth-child(2),
+  .hero__sparkles svg:nth-child(4),
+  .hero__sparkles svg:nth-child(5) {
+    display: none;
+  }
+}
+
+/* the arc that draws itself */
+.hero__arc {
+  position: absolute;
+  left: 50%;
+  top: clamp(1.5rem, 7vh, 5rem);
+  width: min(190%, 2100px);
+  transform: translateX(-50%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__arc path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 13;
+  opacity: 0.92;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-band 1.5s var(--ease) forwards;
+}
+
+.hero__arc path:nth-child(1) {
+  stroke: var(--band-1);
+  animation-delay: 0.15s;
+}
+.hero__arc path:nth-child(2) {
+  stroke: var(--band-2);
+  animation-delay: 0.25s;
+}
+.hero__arc path:nth-child(3) {
+  stroke: var(--band-3);
+  animation-delay: 0.35s;
+}
+.hero__arc path:nth-child(4) {
+  stroke: var(--band-4);
+  animation-delay: 0.45s;
+}
+.hero__arc path:nth-child(5) {
+  stroke: var(--band-5);
+  animation-delay: 0.55s;
+}
+.hero__arc path:nth-child(6) {
+  stroke: var(--band-6);
+  animation-delay: 0.65s;
+}
+
+@keyframes draw-band {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero__umbrella {
+  width: clamp(88px, 13vw, 148px);
+  margin: 0 auto -0.4rem;
+  filter: drop-shadow(0 8px 14px rgba(90, 30, 0, 0.32));
+  animation: umbrella-drop 1s var(--ease) 0.2s backwards;
+}
+
+@keyframes umbrella-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-28px) rotate(-8deg);
+  }
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3rem, 13vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--paper);
+  /* the logo's bevel + shadow, in em so it scales with the type */
+  text-shadow: 0 0.025em 0 var(--peach), 0 0.048em 0 #e08a3c,
+    0 0.1em 0.16em rgba(80, 26, 0, 0.42);
+}
+
+.hero__title span {
+  display: block;
+  font-size: 0.3em;
+  letter-spacing: 0.42em;
+  text-indent: 0.42em;
+  font-weight: 500;
+  margin-top: 0.5em;
+  text-shadow: 0 0.03em 0 #e08a3c, 0 0.07em 0.12em rgba(80, 26, 0, 0.35);
+}
+
+.hero__tagline {
+  max-width: 30ch;
+  margin: clamp(1.5rem, 4vw, 2.25rem) auto 0;
+  font-size: clamp(1.0625rem, 2.2vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff3e2;
+  text-shadow: 0 1px 8px rgba(90, 30, 0, 0.35);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+/* the one rainbow moment outside the hero */
+.rainbow-rule {
+  height: 6px;
+  border: 0;
+  margin: 0;
+  background: linear-gradient(
+    90deg,
+    var(--band-1) 0 16.66%,
+    var(--band-2) 16.66% 33.32%,
+    var(--band-3) 33.32% 49.98%,
+    var(--band-4) 49.98% 66.64%,
+    var(--band-5) 66.64% 83.3%,
+    var(--band-6) 83.3% 100%
+  );
+}
+
+/* ---------- 7. Games -------------------------------------- */
+.section-head {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.game-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--lift);
+  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+
+.game-card:hover,
+.game-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--lift-hi);
+}
+
+.game-card__art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+
+.game-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.game-card:hover .game-card__art img {
+  transform: scale(1.05);
+}
+
+.game-card__status {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(42, 18, 6, 0.82);
+  color: var(--cream);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.game-card__body {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.game-card__icon {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(90, 40, 6, 0.2);
+}
+
+.game-card__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3125rem;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.game-card__meta {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.game-card__foot {
+  margin-top: auto;
+  padding: 0 1.2rem 1.2rem;
+}
+
+/* Play badge */
+.play-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease);
+}
+
+.play-badge:hover {
+  background: var(--ember-dark);
+  color: var(--cream);
+}
+
+.play-badge img {
+  width: 26px;
+  height: 26px;
+}
+
+.play-badge span {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.play-badge strong {
+  display: block;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.play-badge--muted {
+  background: var(--cream-deep);
+  color: var(--ink-soft);
+  cursor: default;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* placeholder art for an unreleased game */
+.game-card__art--wip {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(
+      -45deg,
+      rgba(217, 80, 10, 0.07) 0 12px,
+      transparent 12px 24px
+    ),
+    var(--cream-deep);
+}
+
+.game-card__art--wip p {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0;
+}
+
+/* ---------- 8. About -------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .about {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
+.about__body p {
+  max-width: 58ch;
+  color: var(--ink-soft);
+  font-size: 1.125rem;
+}
+
+.about__body p:first-of-type {
+  font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+  line-height: 1.45;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.facts {
+  display: grid;
+  gap: 1px;
+  background: rgba(42, 18, 6, 0.12);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 0;
+  box-shadow: var(--lift);
+}
+
+.facts div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 1.35rem;
+  background: var(--paper);
+}
+
+.facts dt {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.facts dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  text-align: right;
+}
+
+/* ---------- 9. Contact strip ------------------------------ */
+.contact {
+  text-align: center;
+  background: var(--ink);
+  color: var(--cream);
+  padding-block: clamp(3.5rem, 8vw, 5.5rem);
+}
+
+.contact .eyebrow {
+  color: var(--sun-light);
+}
+
+.contact .section-title {
+  color: var(--paper);
+}
+
+.contact p {
+  max-width: 46ch;
+  margin: 0 auto 2rem;
+  color: #e8d5c2;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.copy-ok {
+  background: var(--sun-light);
+  color: var(--ink);
+  border-color: var(--sun-light);
+}
+
+.copy-ok:hover {
+  background: var(--sun-light);
+  color: var(--ink);
+}
+
+/* ---------- 10. Footer ------------------------------------ */
+.site-footer {
+  background: var(--ink);
+  color: #d9c4b0;
+  padding-block: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.footer-brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+}
+
+.footer-links a {
+  color: #d9c4b0;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--sun-light);
+  text-decoration: underline;
+}
+
+.footer-note {
+  width: 100%;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: #a98c76;
+}
+
+/* ---------- 11. Legal / prose pages ----------------------- */
+.page-head {
+  background: linear-gradient(160deg, var(--sun) 0%, var(--ember) 100%);
+  color: var(--paper);
+  padding: clamp(6.5rem, 14vw, 8.5rem) 0 clamp(2.5rem, 6vw, 4rem);
+  margin-top: -76px;
+  text-align: center;
+}
+
+.page-head .section-title {
+  color: var(--paper);
+  text-shadow: 0 2px 12px rgba(80, 26, 0, 0.3);
+}
+
+.page-head .eyebrow {
+  color: #ffe6c4;
+}
+
+.page-head p {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffe6c4;
+}
+
+.prose {
+  width: min(100% - var(--gutter) * 2, 74ch);
+  margin: clamp(3rem, 7vw, 4.5rem) auto clamp(4rem, 9vw, 6rem);
+}
+
+/* The legal text was written with &emsp; runs for indentation and a
+   pile of one-off classes. Normalise all of it here instead. */
+.prose p {
+  margin: 0 0 1.15rem;
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose p:empty {
+  display: none;
+}
+
+.prose .contentbodyheader,
+.prose h2,
+.prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 2.75rem 0 0.85rem;
+  scroll-margin-top: 6rem;
+}
+
+.prose .contentbodyheader + p,
+.prose h2 + p,
+.prose h3 + p {
+  margin-top: 0;
+}
+
+.prose .contenthighlightbody {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ember-deep);
+  background: var(--cream-deep);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 2rem;
+}
+
+.prose .contentmiddlebody {
+  text-decoration: none;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1.15rem;
+  padding-left: 1.35rem;
+  color: var(--ink-soft);
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.prose b,
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose a {
+  color: var(--ember-deep);
+  font-weight: 500;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid rgba(42, 18, 6, 0.14);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--cream-deep);
+  font-weight: 600;
+}
+
+/* neutralise the old indentation hack without touching the markup */
+.prose .contentbodydata {
+  text-indent: 0;
+}
+
+.to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ember-deep);
+}
+
+.to-top:hover {
+  text-decoration: underline;
+}
+
+/* ---------- 12. Scroll reveal -----------------------------
+   Hidden only when JS is running, so a failed observer or a
+   blocked script can never leave a section invisible. */
+.reveal {
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 13. Motion + print ---------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .hero__arc path {
+    stroke-dashoffset: 0;
+  }
+
+  .hero__sparkles svg {
+    animation: none;
+    opacity: 0.4;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .hero,
+  .to-top {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
