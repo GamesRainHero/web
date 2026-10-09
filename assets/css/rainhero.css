@@ -804,6 +804,41 @@ a:hover {
   backdrop-filter: blur(4px);
 }
 
+/* A game that is out: green dot + LIVE. The dot pulses gently, unless the visitor asks for less motion. */
+.game-card__status--live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.game-card__status--live::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--band-4);
+  box-shadow: 0 0 0 0 rgba(76, 176, 80, 0.7);
+  animation: live-pulse 2s ease-out infinite;
+}
+
+@keyframes live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 176, 80, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 0.45rem rgba(76, 176, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 176, 80, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-card__status--live::before {
+    animation: none;
+  }
+}
+
 .game-card__body {
   display: flex;
   align-items: center;
